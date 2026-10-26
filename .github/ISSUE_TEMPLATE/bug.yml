@@ -1,0 +1,34 @@
+name: 버그
+description: 디코딩 값, 레슨, 화면, 도구가 잘못 동작할 때
+title: "[버그] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 무엇이 잘못되었나
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: 차종, 메시지·신호, 프레임 바이트, 레슨 경로, 실행한 명령 등
+      placeholder: |
+        1. uv run carness-lab
+        2. 손으로 디코딩하기 → 바이트 경계를 넘는 신호
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 결과와 근거
+      description: 예) cantools 결과, 손 계산, 다른 출처와의 비교
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: 환경
+      placeholder: OS, uv 버전, 브라우저
