@@ -1,0 +1,28 @@
+VERSION ""
+
+NS_ :
+
+BS_:
+
+BU_: XXX
+
+BO_ 256 EX_INTEL: 8 XXX
+ SG_ SPEED : 0|16@1+ (0.01,0) [0|655.35] "km/h" XXX
+ SG_ TEMP : 16|8@1- (1,0) [-128|127] "degC" XXX
+ SG_ STEER : 24|12@1- (0.1,0) [-204.8|204.7] "deg" XXX
+ SG_ COUNTER : 56|4@1+ (1,0) [0|15] "" XXX
+
+BO_ 257 EX_MOTOROLA: 8 XXX
+ SG_ SPEED : 7|16@0+ (0.01,0) [0|655.35] "km/h" XXX
+ SG_ TEMP : 23|8@0- (1,0) [-128|127] "degC" XXX
+ SG_ STEER : 31|12@0- (0.1,0) [-204.8|204.7] "deg" XXX
+ SG_ COUNTER : 59|4@0+ (1,0) [0|15] "" XXX
+
+BO_ 258 EX_ODD_BOUNDARY: 8 XXX
+ SG_ INTEL_10 : 5|10@1+ (1,0) [0|1023] "" XXX
+ SG_ MOTOROLA_10 : 21|10@0+ (1,0) [0|1023] "" XXX
+ SG_ OFFSET_ONLY : 40|8@1+ (0.5,-40) [-40|87.5] "degC" XXX
+
+CM_ BO_ 256 "Intel(리틀 엔디언): 시작 비트가 LSB";
+CM_ BO_ 257 "Motorola(빅 엔디언): 시작 비트가 MSB";
+CM_ BO_ 258 "바이트 경계를 넘는 신호와 offset 예제";

@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Carness: 데이터와 대용량 산출물은 커밋하지 않는다
+data/
+*.mcap
+*.parquet
+*.hevc
+*.bz2
+*.zip
+*.blf
+*.bag
+*.db3
+
+# 학습 진행 상황과 코드 레슨 작성 코드
+practice/
