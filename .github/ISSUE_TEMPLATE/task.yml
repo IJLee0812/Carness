@@ -1,0 +1,42 @@
+name: 작업
+description: 새 레슨, 도구, 기능, 정리 작업
+title: "[작업] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: 영역
+      options:
+        - CAN · DBC
+        - 디코딩 검증
+        - 영상 정합
+        - 로그 포맷 · 컨테이너 (BLF · MCAP · rosbag)
+        - 주행 이벤트 검출
+        - 안전 모니터
+        - 다차종 · CAN-FD
+        - 차량 Ethernet (ARXML · SOME/IP)
+        - 도메인 에이전트
+        - 학습 화면 · 도구
+        - 저장소 · CI
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 목표
+      description: 무엇을 할 수 있게 되는지
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 완료 기준
+      description: 「값이 맞다는 근거」를 무엇으로 확인할지 (테스트, 교차 검증, 라이브러리 대조 등)
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 참고한 공개 자료
+      description: 데이터셋, 오픈소스, 표준 해설, 논문 링크
