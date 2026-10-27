@@ -95,7 +95,7 @@ def _front_matter(text: str) -> tuple[dict[str, str], str]:
 
 
 def _lesson(module: str, path: Path) -> Lesson:
-    meta, text = _front_matter(path.read_text())
+    meta, text = _front_matter(path.read_text(encoding="utf-8"))
     kind = meta.get("type", "read")
     if kind not in KINDS:
         raise ValueError(f"{path}: type은 {sorted(KINDS)} 중 하나여야 합니다")
@@ -119,7 +119,7 @@ def _lesson(module: str, path: Path) -> Lesson:
 
 
 def load() -> Course:
-    spec = tomllib.loads((COURSE_DIR / "course.toml").read_text())
+    spec = tomllib.loads((COURSE_DIR / "course.toml").read_text(encoding="utf-8"))
     modules = []
     for m in spec["modules"]:
         folder = COURSE_DIR / m["dir"]

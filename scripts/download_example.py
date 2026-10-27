@@ -7,6 +7,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+from carness.io.comma2k19 import local_path
+
 REPO = "commaai/comma2k19"
 BRANCH = "master"
 DEST = Path(__file__).resolve().parents[1] / "data" / "raw" / "comma2k19"
@@ -20,7 +22,7 @@ def main() -> None:
     for x in files:
         if skip_video and x["path"].endswith(".hevc"):
             continue
-        out = DEST / x["path"]
+        out = DEST / local_path(x["path"])
         if out.exists() and out.stat().st_size == x["size"]:
             continue
         out.parent.mkdir(parents=True, exist_ok=True)

@@ -48,7 +48,7 @@ def given(lesson: Lesson) -> dict:
 
 def progress() -> dict[str, bool]:
     try:
-        return json.loads(PROGRESS.read_text())
+        return json.loads(PROGRESS.read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
@@ -60,18 +60,18 @@ def mark(lesson_id: str, done: bool) -> None:
     else:
         state.pop(lesson_id, None)
     PRACTICE_DIR.mkdir(exist_ok=True)
-    PROGRESS.write_text(json.dumps(state, indent=2, ensure_ascii=False))
+    PROGRESS.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def current_code(lesson: Lesson) -> str:
     path = practice_path(lesson)
-    return path.read_text() if path.exists() else lesson.starter
+    return path.read_text(encoding="utf-8") if path.exists() else lesson.starter
 
 
 def save(lesson: Lesson, code: str) -> None:
     path = practice_path(lesson)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(code)
+    path.write_text(code, encoding="utf-8")
 
 
 def reset(lesson: Lesson) -> str:

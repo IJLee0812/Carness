@@ -61,7 +61,7 @@ def overlapping_signals(message) -> dict[int, list[str]]:
 @lru_cache
 def load(vehicle: str) -> LoadedDbc:
     name = VEHICLES[vehicle]["dbc"]
-    source = EXAMPLES_DBC.read_text() if vehicle == "example" else get_generated_dbcs()[name]
+    source = EXAMPLES_DBC.read_text(encoding="utf-8") if vehicle == "example" else get_generated_dbcs()[name]
     text, issues = _repair(source)
     db = cantools.database.load_string(text, "dbc", strict=False)
     for msg in db.messages:
